@@ -331,7 +331,7 @@
       </div>
 
       <!-- Media Sosial Section -->
-      <div class="col-md-4 text-md-end">
+      <div class="col-md-4 text-md-strat">
         <h5><i class="bi bi-share"></i> Media Sosial</h5>
         <a href="https://facebook.com" class="text-white d-block mb-2" target="_blank">
           <i class="bi bi-facebook"></i> Facebook
@@ -372,7 +372,38 @@
     </div>
   </div>  
 </footer>
-<!-- Akhir Footer -->
+<!-- Akhir Footer --> 
+
+<!-- CSS tambahan -->
+<style>
+  footer {
+    font-size: 13px; /* Ukuran font footer */
+  }
+  footer h5 {
+    font-size: 16px; /* Ukuran font untuk judul seperti 'Curriculum', 'Contact', dll */
+  }
+  footer p, footer a {
+    font-size: 13px; /* Ukuran font untuk teks deskripsi dan link */
+  }
+
+  /* Menambahkan Flexbox agar konten footer diratakan ke tengah */
+  footer .container {
+    display: flex;
+    justify-content: center; /* Menyusun konten di tengah secara horizontal */
+    align-items: center; /* Menyusun konten di tengah secara vertikal */
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center; /* Menyusun kolom secara horizontal di tengah */
+    flex-wrap: wrap;
+  }
+
+  .col-md-4 {
+    margin: 10px 0; /* Menambahkan jarak antar kolom */
+  }
+</style>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
