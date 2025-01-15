@@ -35,7 +35,10 @@
                 <a class="nav-link" href="#about">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#projects">Curriculum</a>
+                <a class="nav-link" href="#projects">Content</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#result">Result</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact</a>
@@ -78,18 +81,147 @@
       </div>
     </div>
   </div>
+</section>
+<!-- Akhir About -->
+
+<<section id="struktur">
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col-md">
+        <h2>Organization Structure</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 text-center" id="struktur-organisasi" data-aos="fade-up">
+        <!-- Flowchart Struktur Organisasi -->
+        <div class="flowchart">
+          <div class="box" id="kepala">
+            <div class="position">Kepala Sekolah</div>
+            <div class="name">[Nama Kepala Sekolah]</div>
+          </div>
+          <div class="line"></div>
+          <div class="row">
+            <div class="box" id="ketua">
+              <div class="position">Ketua</div>
+              <div class="name">[Nama Ketua]</div>
+            </div>
+            <div class="box" id="bendahara">
+              <div class="position">Bendahara</div>
+              <div class="name">[Nama Bendahara]</div>
+            </div>
+            <div class="box" id="koordinator">
+              <div class="position">Koordinator Program</div>
+              <div class="name">[Nama Koordinator]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol untuk memperbarui yang disembunyikan awalnya -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-md text-center">
+        <button class="btn btn-primary" id="perbaruiButton" style="display: none;" onclick="updateStructure()">Perbarui Struktur</button>
+      </div>
+    </div>
+  </div>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#dbecd9" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,122.7C384,117,480,75,576,85.3C672,96,768,160,864,165.3C960,171,1056,117,1152,80C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 </section>
 
-<!-- Akhir About -->
+<style>
+  .flowchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 
+  .flowchart .box {
+    border: 2px solid #4caf50;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    width: 200px;
+  }
+
+  .flowchart .line {
+    width: 2px;
+    height: 30px;
+    background-color: #4caf50;
+  }
+
+  .flowchart .row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  /* Styling for position (job titles) */
+  .position {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2e7d32; /* Dark green for titles */
+    margin-bottom: 5px;
+  }
+
+  /* Styling for name */
+  .name {
+    font-size: 18px;
+    font-weight: normal;
+    color: #388e3c; 
+  }
+  #perbaruiButton {
+    display: none; 
+    margin: 20px auto;
+  }
+</style>
+
+<script>
+  let clickCount = 0; 
+  let toggleCount = 0; 
+
+  function handleClick() {
+    clickCount++;
+
+    if (clickCount % 3 === 0) {
+      toggleCount++; 
+
+      if (toggleCount % 2 === 1) {
+        document.getElementById('perbaruiButton').style.display = 'block'; 
+      } else {
+        document.getElementById('perbaruiButton').style.display = 'none'; 
+      }
+    }
+  }
+
+  document.body.addEventListener('click', handleClick);
+
+  // Fungsi untuk memperbarui struktur organisasi
+  function updateStructure() {
+    const ketua = prompt("Masukkan nama Ketua:");
+    const sekretaris = prompt("Masukkan nama Sekretaris:");
+    const bendahara = prompt("Masukkan nama Bendahara:");
+    const koordinator = prompt("Masukkan nama Koordinator Program:");
+
+    if (ketua && sekretaris && bendahara && koordinator) {
+      document.getElementById("ketua").innerHTML = `<div class="position">Ketua</div><div class="name">${ketua}</div>`;
+      document.getElementById("sekretaris").innerHTML = `<div class="position">Sekretaris</div><div class="name">${sekretaris}</div>`;
+      document.getElementById("bendahara").innerHTML = `<div class="position">Bendahara</div><div class="name">${bendahara}</div>`;
+      document.getElementById("koordinator").innerHTML = `<div class="position">Koordinator Program</div><div class="name">${koordinator}</div>`;
+    } else {
+      alert("Semua data harus diisi!");
+    }
+  }
+</script>
+<!-- AKhir Struktur -->
 
 <!-- Projects -->
 <section id="projects">
   <div class="container">
     <div class="row text-center mb-4">
       <div class="col">
-        <h2>Curriculum</h2>
+        <h2>Content</h2>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -97,7 +229,7 @@
       <!-- Kurikulum 1 -->
       <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k1Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Pemaknaan Fitrah Perempuan">
+          <img src="img/projects/fitrah perempuan.jpg" class="card-img-top img-hover" alt="Pemaknaan Fitrah Perempuan">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -130,7 +262,7 @@
   <!-- Kurikulum 2 -->
   <div class="col-md-4 mb-3">
     <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k2Modal">
-      <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Munakahat">
+      <img src="img/projects/munakahat.jpg" class="card-img-top img-hover" alt="Munakahat">
       <div class="card-body">
         <div class="d-flex justify-content-center align-items-center">
           <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -163,7 +295,7 @@
     <!-- Kurikulum 3 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k3Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Komunikasi Bersama Suami">
+          <img src="img/projects/komunikasi bersama suami.jpg" class="card-img-top img-hover" alt="Komunikasi Bersama Suami">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -196,7 +328,7 @@
   <!-- Kurikulum 4 -->
   <div class="col-md-4 mb-3">
     <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k4Modal">
-      <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Anak Sehat Ibu Bahagia">
+      <img src="img/projects/Ummi🩷⚘️.jpg" class="card-img-top img-hover" alt="Anak Sehat Ibu Bahagia">
       <div class="card-body">
         <div class="d-flex justify-content-center align-items-center">
           <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -229,7 +361,7 @@
     <!-- Kurikulum 5 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k5Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Mengenal Personality">
+          <img src="img/projects/girl hijab.jpg" class="card-img-top img-hover" alt="Mengenal Personality">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -262,7 +394,7 @@
     <!-- Kurikulum 6 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k6Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Parenting">
+          <img src="img/projects/parenting.jpg" class="card-img-top img-hover" alt="Parenting">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -295,7 +427,7 @@
     <!-- Kurikulum 7 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k7Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Pemberdayaan Ekonomi">
+          <img src="img/projects/pemberdayaan ekonomi.jpg" class="card-img-top img-hover" alt="Pemberdayaan Ekonomi">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -328,7 +460,7 @@
     <!-- Kurikulum 8 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k8Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Ibu Berdaya dan Bahagia">
+          <img src="img/projects/ibu bahagia.jpg" class="card-img-top img-hover" alt="Ibu Berdaya dan Bahagia">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -361,7 +493,7 @@
     <!-- Kurikulum 9 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k9Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Menuju Keluarga Sakinah Mawaddah Warahmah">
+          <img src="img/projects/sakinah.jpg" class="card-img-top img-hover" alt="Menuju Keluarga Sakinah Mawaddah Warahmah">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -394,7 +526,7 @@
     <!-- Kurikulum 10 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k10Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Ikhtiar Ibu Mengetuk Pintu Surga">
+          <img src="img/projects/ikhtiar.jpg" class="card-img-top img-hover" alt="Ikhtiar Ibu Mengetuk Pintu Surga">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -427,7 +559,7 @@
     <!-- Kurikulum 11 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k11Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Ketahanan Keluarga">
+          <img src="img/projects/ketahanan keluarga (2).jpg" class="card-img-top img-hover" alt="Ketahanan Keluarga">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -460,7 +592,7 @@
     <!-- Kurikulum 12 -->
     <div class="col-md-4 mb-3">
         <div class="card" data-aos="flip-left" data-aos-duration="500" data-bs-toggle="modal" data-bs-target="#k12Modal">
-          <img src="img/projects/fgd.jpeg" class="card-img-top img-hover" alt="Praktik Wirausaha">
+          <img src="img/projects/wirausaha.jpg" class="card-img-top img-hover" alt="Praktik Wirausaha">
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center">
               <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i> 
@@ -494,6 +626,86 @@
   </svg>
 </section>
 <!-- Akhir Projects -->
+
+<!-- Result -->
+<section id="result">
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col-md">
+        <h2>Result</h2>
+      </div>
+    </div>
+    <!-- Carousel of Products -->
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Product 1 -->
+            <div class="carousel-item active">
+              <div class="card">
+                <img src="img/gallery/thumbnail/kentang1.jpeg" class="card-img-top" alt="Product 1">
+                <div class="card-body">
+                </div>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="carousel-item">
+              <div class="card">
+                <img src="img/gallery/thumbnail/kentang2.jpeg" class="card-img-top" alt="Product 2">
+                <div class="card-body">
+                </div>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="carousel-item">
+              <div class="card">
+                <img src="img/gallery/thumbnail/kentang3.jpeg" class="card-img-top" alt="Product 3">
+                <div class="card-body">
+                </div>
+              </div>
+            </div>
+            <!-- Add more products as needed -->
+          </div>
+
+          <!-- Carousel controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Result -->
+
+<!-- Bootstrap JS (for carousel functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+<!-- Optional: Add custom styles if needed -->
+<style>
+  .carousel-item {
+    text-align: center;
+  }
+  .card {
+    border: 2px solid #4caf50; /* Add border to the card */
+    border-radius: 10px; /* Optional: Add rounded corners to the card */
+    padding: 10px; /* Optional: Add some padding inside the card */
+    display: inline-block;
+  }
+  .card-img-top {
+    width: 70%; /* Reduce the image size to 70% of the card width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the image fits inside the card without stretching */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+</style>
+<!-- End Result -->
 
 <!-- Contact -->
 <section id="contact">
@@ -535,95 +747,90 @@
       </div>
     </div>
   </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#dbecd9" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,122.7C384,117,480,75,576,85.3C672,96,768,160,864,165.3C960,171,1056,117,1152,80C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 </section>
 <!-- Akhir Contact -->
 
 <!-- Footer -->
 <footer class="bg-success text-white py-5">
-    <div class="container">
-        <div class="row justify-content-between">
-    
-            <!-- Logo Section (Pindah ke Kiri) -->
-            <div class="col-12 col-md-3 text-center text-md-start" style="margin-bottom: 40px;">
-                <img src="img/Siba.png" alt="Logo" style="max-width: 120px; transition: transform 0.3s; filter: brightness(0) saturate(100%) invert(100%);">
-                <!-- Text di bawah Logo -->
-                <div style="margin-top: 10px;">
-                    <h6 class="m-0" style="font-weight: bold; font-size: 1.1rem;">SIBa</h6>
-                    <p class="m-0" style="font-size: 0.9rem;">Sekolah Ibu Bahagia</p>
-                </div>
-            </div>
-    
-            <!-- Struktur Organisasi Section (Dipindahkan ke Kiri Contact) -->
-            <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start" style="margin-bottom: 40px;">
-                <h5 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 30px;" id="organizationTitle"><i class="bi bi-people-fill"></i> Struktur Organisasi</h5>
-                <!-- Daftar Struktur Organisasi -->
-                <div class="organization-details">
-                    <p><i class="bi bi-person-circle"></i> <strong>Kepala Sekolah:</strong> Nama Kepala Sekolah</p>
-                    <p><i class="bi bi-person-lines-fill"></i> <strong>Ketua:</strong> Nama Ketua</p>
-                    <p><i class="bi bi-person-badge"></i> <strong>Bendahara:</strong> Nama Bendahara</p>
-                </div>
-            </div>
-
-            <!-- Contact Section -->
-            <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start" style="margin-bottom: 40px;">
-                <h5 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 30px;" id="contactTitle"><i class="bi bi-telephone"></i> Contact</h5>
-                <p><i class="bi bi-whatsapp"></i> 
-                    <a href="https://wa.me/1234567890" class="text-white text-decoration-none" style="transition: color 0.3s;">+62 823-2270-6179</a>
-                </p>
-                <p><i class="bi bi-geo-alt"></i> 
-                    <a href="#" class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#mapModal" id="contactAddress" style="transition: color 0.3s;">
-                        Jl. Gunungkembang, Manggis, Kec. Sirampog, Kabupaten Brebes, Jawa Tengah 52272
-                    </a>
-                </p>
-    
-                <!-- Thumbnail Map Image -->
-                <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">
-                    <img src="img/projects/map.png" alt="Map Thumbnail" class="img-fluid rounded shadow" style="max-width: 100%; height: auto; border-radius: 8px;">
-                </a>
-            </div>
-    
-            <!-- Media Sosial Section -->
-            <div class="col-12 col-md-3 text-center text-md-start" style="margin-bottom: 40px;">
-                <h5 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 30px;" id="socialTitle"><i class="bi bi-share"></i> Media Sosial</h5>
-                <a href="https://facebook.com" class="text-white d-block mb-2" target="_blank" style="transition: color 0.3s;">
-                    <i class="bi bi-facebook"></i> Facebook
-                </a>
-                <a href="https://instagram.com" class="text-white d-block mb-2" target="_blank" style="transition: color 0.3s;">
-                    <i class="bi bi-instagram"></i> Instagram
-                </a>
-            </div>
-        </div>
-    
-        <!-- Horizontal line divider -->
-        <hr class="my-4 border-white">
-    
-        <!-- Copyright Section -->
-        <div class="row mt-4 justify-content-center">
-            <div class="col text-center">
-                <p>&copy; 2024 by KLSM & Team. All Rights Reserved.</p>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+      <div class="row justify-content-between">
   
-    <!-- Modal for Map -->
-    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="mapModalLabel">
-                        Lokasi: Q3V4+Q3C MWC NU Sirampog, Gunungkembang, Manggis, Kec. Sirampog, Kabupaten Brebes, Jawa Tengah 52272
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Larger Map -->
-                    <iframe
-                        src="https://www.google.com/maps?q=Q3V4+Q3C+MWC+NU+Sirampog,+Gunungkembang,+Manggis,+Kec.+Sirampog,+Kabupaten+Brebes,+Jawa+Tengah+52272&output=embed"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>  
+          <!-- Logo Section (Pindah ke Kiri) -->
+          <div class="col-12 col-md-3 text-center text-md-start" style="margin-bottom: 40px;">
+              <div class="d-flex flex-column align-items-center">
+                  <!-- First Logo (NU) - Diletakkan di atas dengan ukuran besar -->
+                  <img src="img/NU.png" alt="Logo 2" style="max-width: 150px; transition: transform 0.3s; filter: brightness(0) saturate(100%) invert(1); margin-bottom: 10px;">
+                  <!-- Second Row - Logo Siba dan Fatayat berdampingan -->
+                  <div class="d-flex justify-content-center">
+                      <!-- Second Logo (Siba) -->
+                      <img src="img/Siba.png" alt="Logo" style="max-width: 120px; transition: transform 0.3s; filter: brightness(0) saturate(100%) invert(1); margin-right: 10px;">
+                      <!-- Third Logo (Fatayat NU) -->
+                      <img src="img/fatayat.png" alt="Logo 3" style="max-width: 120px; transition: transform 0.3s; filter: brightness(0) saturate(100%) invert(1);">
+                  </div>
+              </div>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-12 col-md-3 mb-4 mb-md-0 text-center text-md-start" style="margin-bottom: 40px;">
+              <h5 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 30px;" id="contactTitle"><i class="bi bi-telephone"></i> Contact</h5>
+              <p><i class="bi bi-whatsapp"></i> 
+                  <a href="https://wa.me/1234567890" class="text-white text-decoration-none" style="transition: color 0.3s;">+62 823-2270-6179</a>
+              </p>
+              <p><i class="bi bi-geo-alt"></i> 
+                  <a href="#" class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#mapModal" id="contactAddress" style="transition: color 0.3s;">
+                      Jl. Gunungkembang, Manggis, Kec. Sirampog, Kabupaten Brebes, Jawa Tengah 52272
+                  </a>
+              </p>
+  
+              <!-- Thumbnail Map Image -->
+              <a href="#" data-bs-toggle="modal" data-bs-target="#mapModal">
+                  <img src="img/projects/map.png" alt="Map Thumbnail" class="img-fluid rounded shadow" style="max-width: 100%; height: auto; border-radius: 8px;">
+              </a>
+          </div>
+  
+          <!-- Media Sosial Section -->
+          <div class="col-12 col-md-3 text-center text-md-start" style="margin-bottom: 40px;">
+              <h5 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 30px;" id="socialTitle"><i class="bi bi-share"></i> Media Sosial</h5>
+              <a href="https://www.facebook.com/share/1Ck7LbzGid/" class="text-white d-block mb-2" target="_blank" style="transition: color 0.3s;">
+                  <i class="bi bi-facebook"></i> Facebook
+              </a>
+              <a href="https://www.instagram.com/sibasirampog?igsh=Zmg0NTJ1YnZmY3o4" class="text-white d-block mb-2" target="_blank" style="transition: color 0.3s;">
+                  <i class="bi bi-instagram"></i> Instagram
+              </a>
+          </div>
+      </div>
+  
+      <!-- Horizontal line divider -->
+      <hr class="my-4 border-white">
+  
+      <!-- Copyright Section -->
+      <div class="row mt-4 justify-content-center">
+          <div class="col text-center">
+              <p>&copy; 2024 by KLSM & Team. All Rights Reserved.</p>
+          </div>
+      </div>
+  </div>
+
+  <!-- Modal for Map -->
+  <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="mapModalLabel">
+                      Lokasi: Q3V4+Q3C MWC NU Sirampog, Gunungkembang, Manggis, Kec. Sirampog, Kabupaten Brebes, Jawa Tengah 52272
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- Larger Map -->
+                  <iframe
+                      src="https://www.google.com/maps?q=Q3V4+Q3C+MWC+NU+Sirampog,+Gunungkembang,+Manggis,+Kec.+Sirampog,+Kabupaten+Brebes,+Jawa+Tengah+52272&output=embed"
+                      width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+          </div>
+      </div>
+  </div>  
 </footer>
 <!-- Akhir Footer -->
 
